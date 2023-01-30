@@ -1,4 +1,4 @@
-### Work-Day-Scheduler
+# Work-Day-Scheduler
 
 I was employed to create a work day scheduler for a busy client who wishes to manage their time effectively.
 
