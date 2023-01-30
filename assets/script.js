@@ -26,7 +26,7 @@ for (let i = 0; i < scheduledHours.length; i++) {
     if(scheduledHours[i] > currentTime) {
         description.addClass("past")
     }
-    if(scheduledHours[i] === currentTime) 
+    if(scheduledHours[i] === currentTime) {
         description.addClass("present")
     }
 
@@ -35,6 +35,9 @@ for (let i = 0; i < scheduledHours.length; i++) {
    
 }
 
+$(".saveBtn").on("click", function (event) {
+    let calenderInput = event.target.
+}
 
 
 
