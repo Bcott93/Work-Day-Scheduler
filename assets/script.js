@@ -6,43 +6,35 @@ let currentDate = moment().format("Do MMMM YYYY")
 $("#currentDay").append(currentDate)
 
 // let currentHour = moment().format("hA")
-let currentTime = moment().format("hh:mm:ss a")
+let currentTime = parseInt(moment().format("h a"))
 
-let timeBlockStyle = ""
-
+// An array of the working hours
 let scheduledHours = [9, 10, 11, 12, 13, 14, 15, 16, 17]
+
+let testTime = parseInt(moment("2023-01-30 08:01:00").format("h a"))
 
 for (let i = 0; i < scheduledHours.length; i++) {
     let currentHour = moment(scheduledHours[i], "HH").format("h a")
-    let hourDiv = $("<div>").addClass("hour").text(currentHour)
-    let description = $("<p>").addClass("decription")
-    let saveBtn = $("<button>").addClass("saveBtn").text("Save")
-    console.log(currentHour)
-    $("#container").append(hourDiv, description, saveBtn)
+    let hourDiv = $("<div>").addClass("col-1 hour").text(currentHour)
+    let description = $("<textarea>").addClass("col-10 description").attr("contentEditable", "true")
+    let saveBtn = $("<button>").addClass("col-1 saveBtn").text("Save")
+    let timeBlock = $("<div>").addClass("row").append(hourDiv, description, saveBtn)  
+    
+    if(scheduledHours[i] < currentTime) {
+        description.addClass("future")
+    }
+    if(scheduledHours[i] > currentTime) {
+        description.addClass("past")
+    }
+    if(scheduledHours[i] === currentTime) 
+        description.addClass("present")
+    }
+
+     
+    $(".container").append(timeBlock)
+   
 }
 
 
 
 
-
-
-
-
-
-// // function to check what time what it is and apply the necessary styling
-// function setTime() {
-//     for (let i = 0; i < scheduledHours.length; i++) {
-//         if (currentHour === [i])
-//             var currentTimeColor = $().attr("backgroundcolor", "red")
-//             timeBlockStyle === currentTimeColor
-//     } 
-//         if (currentHour <= [i]) {
-//             var pastTimeColor = $().attr("backgroundcolor", "grey")
-//             timeBlockStyle === pastTimeColor
-//     } else {
-//             var futureTimeColor = $().attr("backgroundcolor", "green")
-//             timeBlockStyle === futureTimeColor
-//     }
-//     console.log(setTime)
-// }
-    
