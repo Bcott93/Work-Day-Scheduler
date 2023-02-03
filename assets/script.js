@@ -33,15 +33,34 @@ for (let i = 0; i < scheduledHours.length; i++) {
     if(scheduledHours[i] === currentTime) {
         description.addClass("present")
     }
-
      // Adds the timeBlock to the HTML.
     $(".container").append(timeBlock)
-   
+    
+    // Creates a variable to check if there is a userInput in localStorage
+    let userInput = window.localStorage.getItem(currentHour)
+    // If there is a userinput, it sets the description value to 
+    if (userInput) {
+      description.val(userInput);
+    }
+
 }
 
-// // $(".saveBtn").on("click", function (event) {
-// //     let calenderInput = event.target.
-// }
+// Adds a click function to all buttons within the relevant class
+$(".saveBtn").on("click", function (event) {
+    // stops the page refreshing once an event is triggered
+event.preventDefault()
+    // Accesses the sibling of .savebtn, and finds the description value, adds it to userInput
+    let userInput = $(this).siblings(".description").val()
+    // Accesses the sibling of .savebtn, and finds the relevant hour value, adds it to hour
+    let hour = $(this).siblings(".hour").text()
+    // Saves the two variables to Local Storage
+    window.localStorage.setItem(hour, userInput)
+})
+
+
+ 
+
+
 
 
 
